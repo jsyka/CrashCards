@@ -31,14 +31,14 @@ class UserView(APIView):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
     
-class SlideDeckView(APIView):
+class CardDeckView(APIView):
     def get(self, request):
-        slide_decks = SlideDeck.objects.all()
-        serializer = SlideDeckSerializer(slide_decks, many=True)
+        slide_decks = CardDeck.objects.all()
+        serializer = CardDeckSerializer(slide_decks, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = SlideDeckSerializer(data=request.data)
+        serializer = CardDeckSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=201)
