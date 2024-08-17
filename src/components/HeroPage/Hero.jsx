@@ -1,4 +1,5 @@
 import './Hero.css'
+import Cards from './Card.jsx'
 
 export default function HeroPage() {
 
@@ -13,7 +14,14 @@ export default function HeroPage() {
             </div>
             <div> {/* make so if you're signed in this shows*/}
                 <h2>Your Decks</h2>
-                {/* put decks here */}
+                {/* put decks here and then makes cards only show when click on deck*/}
+                <Cards />
+            </div>
+            <div>
+                <div>
+                What is CrashCards?
+                </div>
+                <div>best flashcard site in the world!!!</div>
             </div>
         </div>
     )

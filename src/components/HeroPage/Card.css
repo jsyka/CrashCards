@@ -2,6 +2,7 @@
     display: flex;
     flex-flow: row wrap;
     gap: 1em;
+    justify-content: center;
 }
 
 .flashcard {
@@ -11,6 +12,7 @@
     border: 1px solid var(--light-blue);
     border-radius: 8px;
     padding: 1em 1.6em;
+    width: 10em;
 }
 
 .flashcard .title {
