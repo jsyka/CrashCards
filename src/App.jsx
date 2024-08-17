@@ -4,6 +4,7 @@ import './App.css'
 import HeroPage from './components/HeroPage/Hero.jsx'
 import { Route, Routes } from 'react-router-dom'
 import SideBar from './components/SideBar/SideBar.jsx'
+import DeckPage from './components/DeckPage/DeckPage.jsx'
 
 function App() {
 
@@ -64,6 +65,7 @@ function App() {
       <div className='page-content'>
       <Routes>
         <Route path='/home' element={<HeroPage/>}/>
+        <Route path='/my-decks' element={<DeckPage/>}/>
       </Routes>
       </div>
     </>
