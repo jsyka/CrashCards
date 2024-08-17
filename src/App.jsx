@@ -35,6 +35,24 @@ function App() {
       });
   }, []);
 
+  const [users, setUser] = useState("");
+
+  useEffect(() => {
+    axios.get("/api/user/")
+      .then((response) => {
+        console.log(response.data);  // Log the response data
+        if (response.data.length > 0) {
+          setUser(response.data);  // Chooses what field to display from db
+        } else {
+          setUser("No cards found");
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+        setUser("Error fetching cards");
+      });
+  }, []);
+
   const [count, setCount] = useState(0)
 
   return (
@@ -60,6 +78,18 @@ function App() {
           ))
         ) : (
           <p>No cards available</p>
+        )}
+      </div>
+      <h1>Users</h1>
+      <div className="cards">
+        {users.length > 0 ? (
+          users.map((user) => (
+            <div key={user.username} className="card">
+              <h2>{user.username}</h2>
+            </div>
+          ))
+        ) : (
+          <p>No users available</p>
         )}
       </div>
       <p className="read-the-docs">

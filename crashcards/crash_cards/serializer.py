@@ -2,8 +2,11 @@ from rest_framework import serializers
 from .models import *
 
 class CardSerializer(serializers.ModelSerializer):
-    card_front = serializers.StringRelatedField()
-    card_back = serializers.StringRelatedField()
     class Meta:
         model = Card
+        fields = '__all__'
+        
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
         fields = '__all__'
