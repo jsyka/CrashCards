@@ -12,6 +12,14 @@ class Card(models.Model):
     def __str__(self):
         return f"{self.title}, {self.card_front}, {self.card_back}, {self.created_at}" 
     
+class SlideDeck(models.Model):
+    title = models.CharField(max_length=100)
+    cards = models.ManyToManyField(Card)
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.title}, {self.cards}, {self.created_at}"
+    
 class User(models.Model):
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=100) # may need to hash it somehow
