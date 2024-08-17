@@ -12,7 +12,7 @@ class Card(models.Model):
     def __str__(self):
         return f"{self.title}, {self.card_front}, {self.card_back}, {self.created_at}" 
     
-class SlideDeck(models.Model):
+class CardDeck(models.Model):
     title = models.CharField(max_length=100)
     cards = models.ManyToManyField(Card)
     created_at = models.DateTimeField(auto_now_add=True)

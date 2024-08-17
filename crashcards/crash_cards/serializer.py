@@ -11,8 +11,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
         
-class SlideDeckSerializer(serializers.ModelSerializer):
+class CardDeckSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True)
     class Meta:
-        model = SlideDeck
+        model = CardDeck
         fields = '__all__'
