@@ -17,14 +17,14 @@ function App() {
   //     });
   // }, []);
 
-  const [card, setCard] = useState("");
+  const [cards, setCard] = useState("");
 
   useEffect(() => {
     axios.get("/api/cards/")
       .then((response) => {
         console.log(response.data);  // Log the response data
         if (response.data.length > 0) {
-          setCard(response.data[0].card_front);  // Chooses what field to display from db
+          setCard(response.data);  // Chooses what field to display from db
         } else {
           setCard("No cards found");
         }
@@ -47,14 +47,20 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>{card}</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <h1>Cards</h1>
+      <div className="cards">
+        {cards.length > 0 ? (
+          cards.map((card) => (
+            <div key={card.title} className="card">
+              <h2>{card.title}</h2>
+              <p>Front: {card.card_front}</p>
+              <p>Back: {card.card_back}</p>
+              <p>Created At: {card.created_at}</p>
+            </div>
+          ))
+        ) : (
+          <p>No cards available</p>
+        )}
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
