@@ -10,3 +10,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+        
+class SlideDeckSerializer(serializers.ModelSerializer):
+    cards = CardSerializer(many=True)
+    class Meta:
+        model = SlideDeck
+        fields = '__all__'
