@@ -9,12 +9,17 @@
 } */
 
 .deck-page{
-    background-color: #b9cfe6;
-    height: 700px;
-    width: 900px;
+    background-color: #b1c9efbe;
+    height: calc(100vh - 120px);
+    width: calc(100vw - 320px);
     padding: 2rem;
+    box-sizing: border-box;
+    border-radius: 30px;
 }
 
 .deck-page h1{
     text-align: left;
+    color: #0173e9;
+    font-size: 40px;
+    font-weight: 600;
 }
