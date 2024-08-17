@@ -5,18 +5,8 @@ import axios from 'axios'
 import './App.css'
 
 function App() {
-  // const [card, setCard] = useState("");
 
-  // useEffect(() => {
-  //   axios.get("/api/cards/")
-  //     .then((response) => {
-  //       setCard(response.data.card);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error!", error);
-  //     });
-  // }, []);
-
+  // for retrieving cards from the database
   const [cards, setCard] = useState("");
 
   useEffect(() => {
@@ -35,6 +25,7 @@ function App() {
       });
   }, []);
 
+  // for retrieving users from the database
   const [users, setUser] = useState("");
 
   useEffect(() => {
@@ -53,7 +44,23 @@ function App() {
       });
   }, []);
 
-  const [count, setCount] = useState(0)
+  // for passing data to db
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    axios
+      .post("/api/user/", data)
+      .then((response) => {
+        console.log("Form submitted successfully", response);
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+      });
+};
 
   return (
     <>
