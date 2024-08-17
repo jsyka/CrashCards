@@ -24,7 +24,7 @@ function App() {
       .then((response) => {
         console.log(response.data);  // Log the response data
         if (response.data.length > 0) {
-          setCard(response.data[0].title);  // Adjust based on your data structure
+          setCard(response.data[0].card_front);  // Chooses what field to display from db
         } else {
           setCard("No cards found");
         }
