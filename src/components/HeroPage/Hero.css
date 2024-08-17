@@ -1,0 +1,35 @@
+.accent {
+    color: #e54825;
+}
+
+.hero-banner .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.hero-banner .buttons button {
+    border: 1px solid var(--lighest-blue);
+    border-radius: 8px;
+    padding: 0.6em 1.2em;
+    font-size: 1.05em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--white-blue);
+    cursor: pointer;
+    transition: border-color 0.25s;
+    box-shadow: 0 0 1px var(--darkest-blue);
+}
+.hero-banner .buttons button:hover {
+    border-color: var(--dark-blue);
+}
+
+.hero-banner .buttons #sign-in {
+    background-color: var(--dark-blue);
+    color: white;
+    border-color: var(--darkest-blue);
+    transition: background-color 0.25s;
+}
+.hero-banner .buttons #sign-in:hover {
+    background-color: var(--darkest-blue);
+}
