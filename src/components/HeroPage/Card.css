@@ -17,8 +17,8 @@
     /* border: 1px solid var(--darkest-blue); */
     border-radius: 8px;
     /* padding: 1em 1.6em; */
-    width: 70vw;
-    height: 35vh;
+    width: 40vw;
+    height: 50vh;
     transition: transform 0.6s;
     transform-style: preserve-3d;
     position: relative;

@@ -7,7 +7,6 @@ const DeckPage = () => {
     <div className="deck-page">
       <div className="deck-page-container">
         <h1>Decklist</h1>
-        <Cards/>
       </div>
     </div>
   );
