@@ -1,0 +1,20 @@
+/* .deck-page{
+    width: 100vw;
+    height: 100vh;
+}
+.deck-page-container{
+    height: 80%;
+    width: 80%;
+    background-color: #b9cfe6;
+} */
+
+.deck-page{
+    background-color: #b9cfe6;
+    height: 700px;
+    width: 900px;
+    padding: 2rem;
+}
+
+.deck-page h1{
+    text-align: left;
+}
