@@ -42,18 +42,18 @@ function App() {
   //     });
   // };
 
-  useEffect(() => {
-    // Fetch data from the OCR API endpoint
-    axios.get('http://localhost:5001/api/analyze-image')
-      .then(response => {
-        // Log the response data to the console
-        console.log('API Response:', response.data);
-      })
-      .catch(error => {
-        // Log any errors to the console
-        console.error('API Error:', error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Fetch data from the OCR API endpoint
+  //   axios.get('http://localhost:5001/api/analyze-image')
+  //     .then(response => {
+  //       // Log the response data to the console
+  //       console.log('API Response:', response.data);
+  //     })
+  //     .catch(error => {
+  //       // Log any errors to the console
+  //       console.error('API Error:', error);
+  //     });
+  // }, []);
 
 
   return (
