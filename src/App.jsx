@@ -2,6 +2,8 @@ import { useState, useEffect, } from 'react'
 import axios from 'axios'
 import './App.css'
 import HeroPage from './components/HeroPage/Hero.jsx'
+import { Route, Routes } from 'react-router-dom'
+import SideBar from './components/SideBar/SideBar.jsx'
 
 function App() {
 
@@ -58,7 +60,12 @@ function App() {
 
   return (
     <>
-      <HeroPage />
+      <SideBar/>
+      <div className='page-content'>
+      <Routes>
+        <Route path='/home' element={<HeroPage/>}/>
+      </Routes>
+      </div>
     </>
   )
 }

@@ -8,3 +8,16 @@
 .card {
   padding: 2em;
 }
+
+.sidebar{
+  position:  absolute;
+  left: 0;
+  top: 0;
+}
+.page-content{
+  position: absolute;
+  left: 200px;
+  top: 0;
+  padding: 3rem;
+
+}
