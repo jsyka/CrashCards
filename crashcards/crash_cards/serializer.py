@@ -2,18 +2,17 @@ from rest_framework import serializers
 from .models import *
 
 class CardSerializer(serializers.ModelSerializer):
-    card_front = serializers.StringRelatedField()
-    card_back = serializers.StringRelatedField()
     class Meta:
         model = Card
         fields = '__all__'
         
-class CardFrontSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Card_Front
+        model = User
         fields = '__all__'
         
-class CardBackSerializer(serializers.ModelSerializer):
+class SlideDeckSerializer(serializers.ModelSerializer):
+    cards = CardSerializer(many=True)
     class Meta:
-        model = Card_Back
+        model = SlideDeck
         fields = '__all__'

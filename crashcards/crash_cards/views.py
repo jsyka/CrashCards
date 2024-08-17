@@ -18,27 +18,27 @@ class CardsView(APIView):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
     
-class CardFrontView(APIView):
+class UserView(APIView):
     def get(self, request):
-        card_front = Card_Front.objects.all()
-        serializer = CardFrontSerializer(card_front, many=True)
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = CardFrontSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
     
-class CardBackView(APIView):
+class SlideDeckView(APIView):
     def get(self, request):
-        card_back = Card_Back.objects.all()
-        serializer = CardBackSerializer(card_back, many=True)
+        slide_decks = SlideDeck.objects.all()
+        serializer = SlideDeckSerializer(slide_decks, many=True)
         return Response(serializer.data)
     
     def post(self, request):
-        serializer = CardBackSerializer(data=request.data)
+        serializer = SlideDeckSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=201)
