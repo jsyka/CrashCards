@@ -1,0 +1,8 @@
+(informal)
+dotenv
+@azure-rest/ai-vision-image-analysis
+express
+@azure-rest/ai-vision-image-analysis 
+@azure/core-auth 
+dotenv 
+cors

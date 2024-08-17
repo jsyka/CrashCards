@@ -48,7 +48,7 @@ function FlashCard({title, front, back, date}) {
             <div>
                 <div className="title">{title}</div>
                 <div className="card-text">{showBack ? back : front}</div>
-                <div className="date">{date}</div>
+                {/* <div className="date">{date}</div> */}
             </div>
         </div>
     )

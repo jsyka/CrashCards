@@ -1,6 +1,8 @@
 .cards {
     display: flex;
     flex-flow: row wrap;
+    gap: 1em;
+    justify-content: center;
 }
 
 .flashcard {
@@ -9,7 +11,8 @@
     justify-content: center;
     border: 1px solid var(--light-blue);
     border-radius: 8px;
-    padding: 0.6em 1.2em;
+    padding: 1em 1.6em;
+    width: 10em;
 }
 
 .flashcard .title {
@@ -26,4 +29,8 @@
     color: gray;
     font-size: 14px;
     user-select: none;
+}
+
+.flashcard:hover {
+    background-color: var(--white-blue);
 }
