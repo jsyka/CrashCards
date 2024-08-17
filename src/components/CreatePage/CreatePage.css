@@ -1,0 +1,8 @@
+.create-page{
+    background-color: #d2dae66c;
+    height: calc(100vh - 120px);
+    width: calc(100vw - 320px);
+    padding: 50px;
+    box-sizing: border-box;
+    border-radius: 30px;
+}

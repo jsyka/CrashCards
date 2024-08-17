@@ -5,6 +5,8 @@ import HeroPage from './components/HeroPage/Hero.jsx'
 import { Route, Routes } from 'react-router-dom'
 import SideBar from './components/SideBar/SideBar.jsx'
 import DeckPage from './components/DeckPage/DeckPage.jsx'
+import CreatePage from './components/CreatePage/CreatePage.jsx'
+
 
 function App() {
 
@@ -66,6 +68,7 @@ function App() {
       <Routes>
         <Route path='/home' element={<HeroPage/>}/>
         <Route path='/my-decks' element={<DeckPage/>}/>
+        <Route path='/new' element={<CreatePage/>}/>
       </Routes>
       </div>
     </>
