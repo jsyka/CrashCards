@@ -1,9 +1,40 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import axios from 'axios'
 import './App.css'
 
 function App() {
+  // const [card, setCard] = useState("");
+
+  // useEffect(() => {
+  //   axios.get("/api/cards/")
+  //     .then((response) => {
+  //       setCard(response.data.card);
+  //     })
+  //     .catch((error) => {
+  //       console.error("There was an error!", error);
+  //     });
+  // }, []);
+
+  const [card, setCard] = useState("");
+
+  useEffect(() => {
+    axios.get("/api/cards/")
+      .then((response) => {
+        console.log(response.data);  // Log the response data
+        if (response.data.length > 0) {
+          setCard(response.data[0].title);  // Adjust based on your data structure
+        } else {
+          setCard("No cards found");
+        }
+      })
+      .catch((error) => {
+        console.error("There was an error!", error);
+        setCard("Error fetching cards");
+      });
+  }, []);
+
   const [count, setCount] = useState(0)
 
   return (
@@ -16,7 +47,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>{card}</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
