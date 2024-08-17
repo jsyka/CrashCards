@@ -12,16 +12,9 @@ export default function HeroPage() {
                     <button id="sign-in">Sign In</button>
                 </div>
             </div>
-            <div> {/* make so if you're signed in this shows*/}
-                <h2>Your Decks</h2>
-                {/* put decks here and then makes cards only show when click on deck*/}
-                <Cards />
-            </div>
-            <div>
-                <div>
-                What is CrashCards?
-                </div>
-                <div>best flashcard site in the world!!!</div>
+            <div className="description">
+                <h2>What is CrashCards?</h2>
+                <div>the best flashcard site in the world!!!</div>
             </div>
         </div>
     )

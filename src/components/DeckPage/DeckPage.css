@@ -25,6 +25,11 @@
     margin: 0;
 }
 
+.deck-page h1:hover {
+    color: var(--darkest-blue);
+    cursor: pointer;
+}
+
 .deck-container{
     margin-top: 30px;
     display: flex;

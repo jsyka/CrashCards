@@ -1,12 +1,11 @@
 import React from 'react'
 import './Deck.css'
 
-const Deck = () => {
+export default function Deck({title, onClick}) {
+
   return (
-    <div className='deck-card'>
-     <p>Deck title 1</p>
+    <div className='deck-card' onClick={onClick}>
+      <div>{title}</div>
     </div>
   )
-}
-
-export default Deck
+};

@@ -2,6 +2,10 @@
     color: #e54825;
 }
 
+.hero {
+    margin: 0px auto;
+}
+
 .hero-banner .buttons {
     display: flex;
     gap: 20px;
@@ -32,4 +36,9 @@
 }
 .hero-banner .buttons #sign-in:hover {
     background-color: var(--darkest-blue);
+}
+
+.description {
+    margin-top: 50px;
+    text-align: left;
 }

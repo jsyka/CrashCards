@@ -3,50 +3,57 @@ import axios from 'axios'
 import './Card.css'
 
 export default function Cards({deck}) {
-    const [cards, setCard] = useState([]);
+    // const [cards, setCard] = useState([]);
     const [currCard, setCurrCard] = useState(0);
 
-    useEffect(() => {
-        axios.get("/api/cards/")
-        .then((response) => {
-            console.log(response.data);  // Log the response data
-            if (response.data.length > 0) {
-            setCard(response.data);  // Chooses what field to display from db
-            } else {
-            setCard([]);
-            }
-        })
-        .catch((error) => {
-            console.error("There was an error!", error);
-            setCard([]);
-        });
-    }, []);
+    // useEffect(() => {
+    //     axios.get("/api/cards/")
+    //     .then((response) => {
+    //         console.log(response.data);  // Log the response data
+    //         if (response.data.length > 0) {
+    //         setCard(response.data);  // Chooses what field to display from db
+    //         } else {
+    //         setCard([]);
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.error("There was an error!", error);
+    //         setCard([]);
+    //     });
+    // }, []);
 
-    const cardsList = cards.map(card => (
-        <FlashCard title={card.title} front={card.card_front} back={card.card_back} date={card.created_at} key={card.id}/>
-    ));
+    // const cardsList = cards.map(card => (
+    //     <FlashCard title={card.title} front={card.card_front} back={card.card_back} date={card.created_at} key={card.id}/>
+    // ));
 
     function prevCard() {
         if (currCard == 0) {
-            setCurrCard(cards.length-1);
+            setCurrCard(deck.length-1);
         } else {
             setCurrCard(currCard-1);
         }
     }
 
     function nextCard() {
-        if (currCard == cards.length-1) {
+        if (currCard == deck.length-1) {
             setCurrCard(0);
         } else {
             setCurrCard(currCard+1);
         }
     }
 
+    const deckList = deck.map(card => (
+        <FlashCard title={card.title} front={card.card_front} back={card.card_back} date={card.created_at} key={card.id}/>
+    ));
+
     return (
         <div className="allcards">
-            <h2>{deck} Cards</h2>
-            <div className="cards">
+            <h2>Cards</h2>
+            {/* <div className="cards">
                 {cardsList.length > 0 ? cardsList[currCard] : <div>No Cards Found</div>}
+            </div> */}
+            <div className="cards">
+                {deckList.length > 0 ? deckList[currCard] : <div>No Cards Found</div>}
             </div>
             <div className="buttons"> 
                 <button onClick={prevCard}>Previous</button>
