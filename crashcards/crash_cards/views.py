@@ -100,7 +100,7 @@ class GenerateFlashcardsView(APIView):
         if not notes:
             return Response({"error": "No notes provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try:
+        try: #console.log later!
             flashcards = generateCards(notes)
             cards = []
             for i in range(1, 10):
