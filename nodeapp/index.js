@@ -15,7 +15,7 @@ const credential = new AzureKeyCredential(key);
 const client = createClient(endpoint, credential);
 
 const features = ['Caption', 'Read'];
-const imageUrl = 'https://media.npr.org/assets/img/2010/12/22/thank-you-note_custom-f7bd9bdabacad41f8c92f3a4e2beae5cc1261413.jpg';
+// const imageUrl = noteImgUrl;
 
 // Middleware
 app.use(express.json());
@@ -23,6 +23,13 @@ app.use(cors());
 
 // API Endpoint
 app.get('/api/analyze-image', async (req, res) => {
+    // Retrieve the full image URL from query parameters
+    const { imageUrl } = req.query;
+
+    if (!imageUrl) {
+      return res.status(400).send('Image URL is required');
+    }
+    
   try {
     const result = await client.path('/imageanalysis:analyze').post({
       body: {
