@@ -38,6 +38,18 @@
     animation: 0.5s fadeUp;
 }
 
+.back{
+    background-color: #ffffff00;
+    color: rgb(109, 115, 129);
+    padding: 0px;
+    border: none;
+
+}
+.back:hover{
+    color:#0173e9;
+    border: none;
+}
+
 @keyframes fadeUp {
     0% {
       opacity: 0;

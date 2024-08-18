@@ -1,0 +1,39 @@
+.upload-banner{
+    background-image: linear-gradient(#103ce7, #64e9ff);
+    height: 70vh;
+    width: 30vw;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.url-form{
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.upload-banner input{
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.upload-banner button{
+    color: #0173e9;
+}
+
+.upload-banner h2{
+    color: white;
+    margin: 20px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.upload-contents{
+    width: 20vw;
+}
