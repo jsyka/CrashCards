@@ -44,7 +44,7 @@
     color: rgb(109, 115, 129);
     padding: 0px;
     border: none;
-
+    cursor: pointer;
 }
 .back:hover{
     color:#0173e9;

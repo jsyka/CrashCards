@@ -21,8 +21,8 @@ export default function HeroPage() {
       <div className="description">
         <h2>What is CrashCards?</h2>
         <p>
-          the best flashcard site ever! no premium plans, hidden fees, or
-          paywalls!
+          CrashCards is an innovative tool designed to streamline your study process. By simply taking photos of your notes or entering text, CrashCards automatically generates flashcards for you to review. It's perfect for students and professionals looking to enhance their learning efficiency and retain information more effectively. Say goodbye to the hassle of manual flashcard creation and let CrashCards do the work, so you can focus on mastering the material.
+          No premium plans, hidden fees, or paywalls!
         </p>
       </div>
     </div>

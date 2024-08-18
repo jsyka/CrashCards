@@ -54,6 +54,10 @@ def generateCards(notes):
     # response = json.loads(response.text[7:-3])  # Adjusted to parse JSON
     return response_json
 
+def generateDeckName(notes):
+    response = model.generate_content("Give me a singular title to label these notes: " + notes)
+    return response.text.strip()
+
 # Create your views here.
 class CardsView(APIView):
     def get(self, request):
@@ -101,15 +105,15 @@ class GenerateFlashcardsView(APIView):
         if not notes:
             return Response({"error": "No notes provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try: #no need to console.log later! (fixed it) - next step is to change so that user can choose to save and pick/change title?
+        try: #no need to console.log later! (fixed it)
             flashcards = generateCards(notes)
             cards = []
-            for i in range(1, 10):
+            for i in range(0, 10):
                 # print(i, flashcards[i])
                 card = createCard(flashcards[i]['front'], flashcards[i]['back'])
                 cards.append(card)
             # print(cards)
-            card_deck = createCardDeck("Generated Flashcards", cards)
+            card_deck = createCardDeck("Heart Anatomy & Blood Flow", cards)
             serializer = CardDeckSerializer(card_deck)
             print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
