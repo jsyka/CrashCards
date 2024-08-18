@@ -101,7 +101,7 @@ class GenerateFlashcardsView(APIView):
         if not notes:
             return Response({"error": "No notes provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try: #no need to console.log later! (fixed it) - next step is to change so that user can choose to save and pick/change title?
+        try: #no need to console.log later! (fixed it)
             flashcards = generateCards(notes)
             cards = []
             for i in range(1, 10):
