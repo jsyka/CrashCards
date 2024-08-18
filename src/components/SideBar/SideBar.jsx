@@ -15,6 +15,8 @@ const SideBar = () => {
                 My Decks</Link>
                 <Link to='/new' className='nav-text'>
                 Create New</Link>
+                <Link to='/sign-up' className='nav-text'>
+                Login</Link>
             </li>
         </ul>
       
