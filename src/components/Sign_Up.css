@@ -29,7 +29,9 @@
     padding: 10px;
 
 }
-
+.sign-up h2{
+    color: #0173e9;
+}
 .sign-up input{
     background-color: white;
     border: 1px solid grey;

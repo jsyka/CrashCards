@@ -43,7 +43,10 @@ def generateCards(notes):
     print(response.text.strip())
     try:
         # Adjust the slicing or parsing if needed
-        response_json = json.loads(response.text.strip())
+        response_text = response.text.strip()
+        if response_text.startswith("```json"):
+            response_text = response_text[7:-3]
+        response_json = json.loads(response_text)
     except json.JSONDecodeError as e:
         print("JSON decode error:", e)
         raise

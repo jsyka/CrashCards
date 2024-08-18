@@ -82,12 +82,16 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
+    border: 1px solid var(#0173e9);
 }
 
 .allcards .buttons button {
-    border: 1px solid var(--darkest-blue);
+    border: 1px solid var(#0173e9);
+    border-radius: 30px;
+    color: #0173e9;
 }
 
 .allcards .buttons button:hover {
-    border-color: var(--blue);
+    border: 2px solid var(#0173e9);
+    color: #0173e9;
 }

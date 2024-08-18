@@ -1,0 +1,81 @@
+.upload-banner{
+    background-image: linear-gradient(#103ce7, #64e9ff);
+    height: 70vh;
+    width: 30vw;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 2px 2px 15px rgba(40, 80, 155, 0.61);
+}
+
+.url-form{
+    /* border: 2px solid white; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.upload-banner input{
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.upload-banner button{
+    color: #0173e9;
+}
+
+.upload-banner h2{
+    color: white;
+    margin: 20px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.upload-contents{
+    width: 20vw;
+}
+
+.upload-banner-container{
+    display: flex;
+    gap: 4vw;;
+}
+.card-results{
+    padding: none;
+    margin: none;
+    text-align: left;
+    width: 35vw;
+    height: 60vh;
+    overflow: scroll;
+    padding: 30px;
+    display: flex; 
+    flex-direction: column;
+}
+
+
+textarea{
+    border-radius: 20px;
+    width: 15vw;
+    height: 15vh;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid white;
+    color: white;
+    font-family: inter;
+    font-size: 13px;
+    margin-top: -20px;
+    background-color: #ffffff00;
+
+}
+
+.upload-banner p{
+    color: white;
+    margin: 6px 0px;
+}
+
+.save{
+    color: #0173e9;
+}

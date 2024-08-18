@@ -26,16 +26,28 @@
     animation: 0.5s fadeUp;
 }
 
-.deck-page h1:hover {
+/* .deck-page h1:hover {
     color: var(--darkest-blue);
     cursor: pointer;
-}
+} */
 
 .deck-container{
     margin-top: 30px;
     display: flex;
     gap: 20px;
     animation: 0.5s fadeUp;
+}
+
+.back{
+    background-color: #ffffff00;
+    color: rgb(109, 115, 129);
+    padding: 0px;
+    border: none;
+
+}
+.back:hover{
+    color:#0173e9;
+    border: none;
 }
 
 @keyframes fadeUp {
