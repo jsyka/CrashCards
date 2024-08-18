@@ -30,6 +30,14 @@ def generateCards(notes):
     # response = json.loads(response.text[7:-3])  # Adjusted to parse JSON
     return response_json
 
+# def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = User.objects.filter(username=username, password=password)
+        if user.exists():
+            return JsonResponse({'success': True, 'message': 'Login successful'})
+        return JsonResponse({'success': False, 'message': 'Login failed'}, status=400)
 # Create your views here.
 class CardsView(APIView):
     def get(self, request):

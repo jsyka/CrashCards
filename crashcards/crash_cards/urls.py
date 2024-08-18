@@ -8,4 +8,5 @@ urlpatterns = [
     # path('cards/<int:pk>/', views.CardRetrieveUpdateDestroy.as_view(), name='card-retrieve-update-destroy'),
     path('generate-flashcards/', views.GenerateFlashcardsView.as_view(), name='generate-flashcards'),
     path('csrf-token/', views.CSRFTokenView.as_view(), name='csrf-token'),
+    # path('user/login/', views.login_view, name='user-login'),
 ]
