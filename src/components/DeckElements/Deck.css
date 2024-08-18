@@ -9,6 +9,8 @@
     justify-content: center;
     margin-top: 20px;
     box-shadow: 2px 2px 15px rgba(40, 80, 155, 0.61);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .deck-title{

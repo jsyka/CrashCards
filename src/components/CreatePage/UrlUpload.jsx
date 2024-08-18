@@ -38,7 +38,7 @@ const UrlUpload = () => {
       }
 
       const data = await response.json();
-      // setFlashcards(data);
+      setFlashcards(data["cards"]);
       console.log("FCS:", data);
     } catch (error) {
       console.error("Error:", error);
@@ -115,7 +115,7 @@ const UrlUpload = () => {
   };
 
   const flashcardList = flashcards.map((fc) => (
-    <FakeCard question={fc.front} answer={fc.back} />
+    <FakeCard question={fc.card_front} answer={fc.card_back} />
   ));
 
   function changeMethod() {
@@ -166,7 +166,7 @@ const UrlUpload = () => {
         </div>
       </div>
       <div className="card-results">{flashcardList}
-      <button className="save"> I like it! </button>
+      <button className="save" onClick={() => {alert("Your flashcards have been saved! Check it out in the 'My Decks' tab.")}}> I like it! </button>
       </div>
 
     </div>
