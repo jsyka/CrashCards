@@ -8,6 +8,7 @@ const UrlUpload = () => {
   const [notes, setNotes] = useState("");
   const [flashcards, setFlashcards] = useState([]);
   const [csrfToken, setCsrfToken] = useState("");
+  const [uploadMethod, setUploadMethod] = useState(false);
 
   useEffect(() => {
     // Fetch CSRF token from Django
@@ -19,6 +20,7 @@ const UrlUpload = () => {
 
   const handleGenerate = async (notes) => {
     console.log("notes going in: ", notes);
+    alert("Flashcards are being generated, please be patient! Try again in 15 seconds if text is not generated.")
     try {
       const response = await fetch("api/generate-flashcards/", {
         method: "POST",
@@ -113,10 +115,15 @@ const UrlUpload = () => {
     <FakeCard question={fc.front} answer={fc.back} />
   ));
 
+  function changeMethod() {
+    setUploadMethod(!uploadMethod);
+  }
+
   return (
     <div className="upload-banner-container">
     <div className="upload-banner">
         <div className="upload-contents">
+        {uploadMethod ? <>
         <h2>Upload your image URL to create automatically generated flashcards!</h2>
         <form onSubmit={handleSubmit} className="url-form">
           {/* <label htmlFor="urlInput">Enter URL:</label> */}
@@ -129,7 +136,20 @@ const UrlUpload = () => {
             required
           />
           <button type="submit">Submit</button>
+          <div>Or</div>
+          <button onClick={changeMethod}>Upload Text</button>
         </form>
+        </> : <>
+        <h2>Paste your notes below to create automatically generated flashcards!</h2>
+        <textarea
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="Enter your notes here"
+        />
+        <button onClick={() => handleGenerate(notes)}>Submit</button>
+        <div>Or</div>
+        <button onClick={changeMethod}>Upload Image</button>
+        </>}
         </div>
         </div>
       <div className="card-results">{flashcardList}</div>
