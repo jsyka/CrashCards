@@ -9,6 +9,7 @@ const DeckPage = () => {
   const [ decks, setDecks ] = useState([]);
   const [ cards, setCards ] = useState(<></>);
   const [ viewingDeck, setViewingDeck ] = useState(false);
+  const [ showPopup, setShowPopup ] = useState(false);
 
  const changeHeading = (newHeading) => {
 setHeading(newHeading);
@@ -46,16 +47,30 @@ setHeading(newHeading);
     changeHeading('Decklist');
   }
 
+  function togglePopup() {
+    setShowPopup(!showPopup);
+  }
+
   return (
     <div className="deck-page">
       <div className="deck-page-container">
-        <h1>{heading}</h1>
-        {viewingDeck? <button className='back'onClick={backToMain}> Go Back</button>: ''}
+        <div className="heading">
+          <h1>{heading}</h1>
+          {viewingDeck && <img src="https://www.svgrepo.com/show/42233/pencil-edit-button.svg" className="edit-icon" onClick={togglePopup} />}
+        </div>
+        {viewingDeck? <button className='back'onClick={backToMain}>Go Back to Decklist</button>: ''}
         {/* <h1 onClick={backToMain}>{viewingDeck? 'Decklist' : deck.title}</h1> */}
         <div className="deck-container">
           {viewingDeck ? cards : deckList}
         </div>
       </div>
+      {showPopup && <div className="popup">
+        <div className="popup-content">
+          <button>Edit Title</button>
+          <button className="delete">Delete Deck</button>
+          <button onClick={togglePopup}>Close Edit Menu</button>
+        </div>
+      </div>}
     </div>
   );
 };

@@ -42,6 +42,7 @@ const UrlUpload = () => {
       console.log("FCS:", data);
     } catch (error) {
       console.error("Error:", error);
+      alert("Sorry, an error occured while generating your flashcards. Please try again later.")
     }
   };
 
