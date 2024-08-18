@@ -10,7 +10,7 @@
 }
 
 .url-form{
-    border: 2px solid white;
+    /* border: 2px solid white; */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -36,4 +36,17 @@
 
 .upload-contents{
     width: 20vw;
+}
+
+.upload-banner-container{
+    display: flex;
+    gap: 4vw;;
+}
+.card-results{
+    padding: none;
+    margin: none;
+    text-align: left;
+    width: 35vw;
+    height: 70vh;
+    overflow: scroll;
 }

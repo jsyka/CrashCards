@@ -114,6 +114,7 @@ const UrlUpload = () => {
   ));
 
   return (
+    <div className="upload-banner-container">
     <div className="upload-banner">
         <div className="upload-contents">
         <h2>Upload your image URL to create automatically generated flashcards!</h2>
@@ -130,7 +131,8 @@ const UrlUpload = () => {
           <button type="submit">Submit</button>
         </form>
         </div>
-      <div>{flashcardList}</div>
+        </div>
+      <div className="card-results">{flashcardList}</div>
     </div>
   );
 };
