@@ -48,7 +48,7 @@ export default function Cards({deck}) {
 
     return (
         <div className="allcards">
-            <h2>Cards</h2>
+            <h2></h2>
             {/* <div className="cards">
                 {cardsList.length > 0 ? cardsList[currCard] : <div>No Cards Found</div>}
             </div> */}
