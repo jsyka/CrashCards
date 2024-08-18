@@ -16,6 +16,8 @@ const SideBar = () => {
                 <Link to='/new' className='nav-text'>
                 Create New</Link>
                 <Link to='/sign-up' className='nav-text'>
+                Sign Up</Link>
+                <Link to='/login' className='nav-text'>
                 Login</Link>
             </li>
         </ul>

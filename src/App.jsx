@@ -7,6 +7,7 @@ import SideBar from './components/SideBar/SideBar.jsx'
 import DeckPage from './components/DeckPage/DeckPage.jsx'
 import CreatePage from './components/CreatePage/CreatePage.jsx'
 import Sign_Up from './components/Sign_Up.jsx'
+import Login from './components/Login.jsx'
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
         <Route path='/my-decks' element={<DeckPage/>}/>
         <Route path='/new' element={<CreatePage/>}/>
         <Route path='/sign-up' element={<Sign_Up/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
       </div>
     </>

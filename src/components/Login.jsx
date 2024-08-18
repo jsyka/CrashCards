@@ -1,29 +1,34 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './Sign_Up.css'
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate(); // Initialize useNavigate
 
-    const onSubmit = (data) => {
-        axios
-        .post("/api/user/", data)
-        .then((response) => {
-            console.log("Form submitted successfully", response);
-        })
-        .catch((error) => {
-            console.error("There was an error!", error);
-        });
+    const getData = async (data) => {
+        try {
+            const response = await axios.get("/api/user/", {
+                username: data.username,
+                password: data.password,
+            });
+
+            if (response.data) { // Adjust based on your backend response
+                navigate('/home'); // Redirect to home page on successful login
+            } else {
+                console.error('Invalid credentials');
+            }
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
     };
 
     return (
         <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit(onSubmit)}> 
+            <h2>Log In</h2>
+            <form onSubmit={handleSubmit(getData)}> 
                 <div>
                     <label htmlFor="username">Username: </label>
                     <input
@@ -32,21 +37,12 @@ export default function Login() {
                     />
                 </div>
 
-                <label htmlFor="email">Email: </label>
-                <input
-                    type="email"
-                    id="email"
-                    {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-                />
-                {errors.email && (
-                    <p className="error">Please enter a valid email address.</p>
-                )}
                 <label htmlFor="password">Password: </label>
                 <input
                     id="password"
                     {...register("password", { required: true })}
                 />
-                <button className={styles.conButton} type="submit" name="button" value="submit">Submit</button>
+                <button type="submit" name="button" value="submit">Submit</button>
             </form> 
         </div>
     )
