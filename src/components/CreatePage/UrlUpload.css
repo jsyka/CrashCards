@@ -48,6 +48,34 @@
     margin: none;
     text-align: left;
     width: 35vw;
-    height: 70vh;
+    height: 60vh;
     overflow: scroll;
+    padding: 30px;
+    display: flex; 
+    flex-direction: column;
+}
+
+
+textarea{
+    border-radius: 20px;
+    width: 15vw;
+    height: 15vh;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid white;
+    color: white;
+    font-family: inter;
+    font-size: 13px;
+    margin-top: -20px;
+    background-color: #ffffff00;
+
+}
+
+.upload-banner p{
+    color: white;
+    margin: 6px 0px;
+}
+
+.save{
+    color: #0173e9;
 }
