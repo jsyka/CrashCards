@@ -19,11 +19,11 @@ model = genai.GenerativeModel('gemini-1.5-flash')
 
 def generateCards(notes):
     print(notes)
-    response = model.generate_content("Create 10 flashcards in a JSON format based off these notes: " + notes)
-    print(response.text.strip()[7:-4])
+    response = model.generate_content("Create 10 flashcards in a JSON format based off the following notes. Use 'front' and 'back' as the keys. Do not include extra text at the end. " + notes)
+    print(response.text.strip())
     try:
         # Adjust the slicing or parsing if needed
-        response_json = json.loads(response.text.strip()[7:-4])
+        response_json = json.loads(response.text.strip())
     except json.JSONDecodeError as e:
         print("JSON decode error:", e)
         raise
