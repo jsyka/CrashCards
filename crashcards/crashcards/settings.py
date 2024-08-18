@@ -138,4 +138,10 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", # the port for frontend
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:5001",
+    "http://127.0.0.1:8000/",
+]
+
 # APPEND_SLASH = False
