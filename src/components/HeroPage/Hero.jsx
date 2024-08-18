@@ -1,5 +1,6 @@
 import './Hero.css'
 import Cards from '../DeckElements/Card.jsx'
+import { Link } from 'react-router-dom'
 
 export default function HeroPage() {
 
@@ -8,7 +9,8 @@ export default function HeroPage() {
             <div className="hero-banner">
                 <h1 className="title">Welcome to <span className="accent">CrashCards</span>!</h1>
                 <div className="buttons">
-                    <button id="log-in">Log In</button>
+                
+                    <button id="log-in" >Log In</button>
                     <button id="sign-in">Sign Up</button>
                 </div>
             </div>

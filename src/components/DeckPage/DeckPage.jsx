@@ -5,7 +5,7 @@ import Cards from "../DeckElements/Card";
 import Deck from "../DeckElements/Deck";
 
 const DeckPage = () => {
-  const [ heading, setHeading ] = useState('Heading');
+  const [ heading, setHeading ] = useState('Decklist');
   const [ decks, setDecks ] = useState([]);
   const [ cards, setCards ] = useState(<></>);
   const [ viewingDeck, setViewingDeck ] = useState(false);

@@ -26,24 +26,32 @@ export default function Login() {
     };
 
     return (
-        <div>
+        <div className='sign-up'>
+            <div className='sign-up-card'>
+                <div className='sign-up-content'>
             <h2>Log In</h2>
             <form onSubmit={handleSubmit(getData)}> 
-                <div>
-                    <label htmlFor="username">Username: </label>
+                <div className='input'>
+                    {/* <label htmlFor="username">Username: </label> */}
                     <input
+                    placeholder='Enter your Username'
                     id="username"
                     {...register("username", { required: true })}
                     />
                 </div>
 
-                <label htmlFor="password">Password: </label>
+                {/* <label htmlFor="password">Password: </label> */}
+                <div className='input'>
                 <input
+                    placeholder='Enter your Password'
                     id="password"
                     {...register("password", { required: true })}
                 />
+                </div>
                 <button type="submit" name="button" value="submit">Submit</button>
-            </form> 
+            </form>
+            </div> 
+            </div>
         </div>
     )
 }
