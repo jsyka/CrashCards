@@ -17,6 +17,26 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
+def createCard(card_front, card_back):
+    try:
+        card = Card(card_front=card_front, card_back=card_back)
+        card.save()
+        return card
+    except Exception as e:
+        print("Error creating card:", e)
+        raise
+
+def createCardDeck(title, cards):
+    try:
+        card_deck = CardDeck(title=title)
+        card_deck.save()
+        for card in cards:
+            card_deck.cards.add(card)
+        return card_deck
+    except Exception as e:
+        print("Error creating card deck:", e)
+        raise
+
 def generateCards(notes):
     print(notes)
     response = model.generate_content("Create 10 flashcards in a JSON format based off the following notes. Use 'front' and 'back' as the keys. Do not include extra text at the end. " + notes)
@@ -30,14 +50,6 @@ def generateCards(notes):
     # response = json.loads(response.text[7:-3])  # Adjusted to parse JSON
     return response_json
 
-# def login_view(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = User.objects.filter(username=username, password=password)
-        if user.exists():
-            return JsonResponse({'success': True, 'message': 'Login successful'})
-        return JsonResponse({'success': False, 'message': 'Login failed'}, status=400)
 # Create your views here.
 class CardsView(APIView):
     def get(self, request):
@@ -78,6 +90,7 @@ class CardDeckView(APIView):
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
     
+    
 class GenerateFlashcardsView(APIView):
     def post(self, request):
         notes = request.data.get('notes', '')
@@ -86,7 +99,14 @@ class GenerateFlashcardsView(APIView):
 
         try:
             flashcards = generateCards(notes)
-            return Response(flashcards, status=status.HTTP_200_OK)
+            cards = []
+            for i in range(1, 10):
+                card = createCard(flashcards[i['front']], flashcards[i['back']])
+                cards.append(card)
+            card_deck = createCardDeck("Generated Flashcards", cards)
+            serializer = CardDeckSerializer(card_deck)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # return Response(flashcards, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
