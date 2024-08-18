@@ -38,8 +38,8 @@ const UrlUpload = () => {
       }
 
       const data = await response.json();
-      setFlashcards(data);
-      console.log("FCS:", flashcards);
+      // setFlashcards(data);
+      console.log("FCS:", data);
     } catch (error) {
       console.error("Error:", error);
     }

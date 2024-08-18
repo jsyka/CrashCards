@@ -18,6 +18,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 def createCard(card_front, card_back):
+    print("creating card now")
     try:
         card = Card(card_front=card_front, card_back=card_back)
         card.save()
@@ -100,14 +101,17 @@ class GenerateFlashcardsView(APIView):
         if not notes:
             return Response({"error": "No notes provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try: #console.log later!
+        try: #no need to console.log later! (fixed it) - next step is to change so that user can choose to save and pick/change title?
             flashcards = generateCards(notes)
             cards = []
             for i in range(1, 10):
-                card = createCard(flashcards[i['front']], flashcards[i['back']])
+                # print(i, flashcards[i])
+                card = createCard(flashcards[i]['front'], flashcards[i]['back'])
                 cards.append(card)
+            # print(cards)
             card_deck = createCardDeck("Generated Flashcards", cards)
             serializer = CardDeckSerializer(card_deck)
+            print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
             # return Response(flashcards, status=status.HTTP_200_OK)
         except Exception as e:
