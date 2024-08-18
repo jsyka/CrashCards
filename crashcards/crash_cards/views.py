@@ -54,9 +54,6 @@ def generateCards(notes):
     # response = json.loads(response.text[7:-3])  # Adjusted to parse JSON
     return response_json
 
-def generateDeckName(notes):
-    response = model.generate_content("Give me a singular title to label these notes: " + notes)
-    return response.text.strip()
 
 # Create your views here.
 class CardsView(APIView):
@@ -105,21 +102,43 @@ class GenerateFlashcardsView(APIView):
         if not notes:
             return Response({"error": "No notes provided"}, status=status.HTTP_400_BAD_REQUEST)
 
-        try: #no need to console.log later! (fixed it)
+        try:
             flashcards = generateCards(notes)
+            return Response(flashcards, status=status.HTTP_200_OK)
+            # cards = []
+            # for i in range(0, 10):
+            #     # print(i, flashcards[i])
+            #     card = createCard(flashcards[i]['front'], flashcards[i]['back'])
+            #     cards.append(card)
+            # # print(cards)
+            # card_deck = createCardDeck("Heart Anatomy & Blood Flow", cards)
+            # serializer = CardDeckSerializer(card_deck)
+            # print(serializer.data)
+            # return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+class SaveFlashcardsView(APIView):
+    def post(self, request):
+        flashcards = request.data.get('flashcards', '')
+        deck_title = request.data.get('deckTitle', 'New Deck')  # Get the title from the request, with a default
+
+        if not flashcards:
+            return Response({"error": "No flashcards provided!"}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
             cards = []
             for i in range(0, 10):
                 # print(i, flashcards[i])
                 card = createCard(flashcards[i]['front'], flashcards[i]['back'])
                 cards.append(card)
             # print(cards)
-            card_deck = createCardDeck("Heart Anatomy & Blood Flow", cards)
+            card_deck = createCardDeck(deck_title, cards)
             serializer = CardDeckSerializer(card_deck)
             print(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # return Response(flashcards, status=status.HTTP_200_OK)
         except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"saving error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 class CSRFTokenView(APIView):
     def get(self, request):

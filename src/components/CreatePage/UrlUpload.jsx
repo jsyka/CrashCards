@@ -38,20 +38,47 @@ const UrlUpload = () => {
       }
 
       const data = await response.json();
-      setFlashcards(data["cards"]);
       console.log("FCS:", data);
+      setFlashcards(data);
     } catch (error) {
       console.error("Error:", error);
       alert("Sorry, an error occured while generating your flashcards. Please try again later.")
     }
   };
 
-  // useEffect(() => {
-  //   // Fetch CSRF token from Django
-  //   axios.get('http://localhost:8000/csrf-token/')
-  //     .then(response => setCsrfToken(response.data.csrfToken))
-  //     .catch(error => console.error('Error fetching CSRF token:', error));
-  // }, []);
+  const saveFlashcards = async () => {
+    const deckTitle = prompt("Enter a title for your flashcard deck:", "Untitled Deck");
+    if (!deckTitle) {
+      alert("You must provide a title to save the flashcards.");
+      return;
+    }
+
+    console.log("starting here, ", flashcards)
+    try {
+      const response = await fetch("api/save-flashcards/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken,
+        },
+        body: JSON.stringify({ flashcards, deckTitle }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save flashcards");
+      }
+
+      const data = await response.json();
+      console.log("save flashcard response:", data);
+      setImageUrl("");
+      setNotes("");
+      setFlashcards([]);
+      alert("Your flashcards have been saved as a new Deck called " + deckTitle + "! Check it out in My Decks.");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Sorry, an error occured while saving your flashcards. Please try again later.")
+    }
+  }
 
   // const handleGenerate = async () => {
   //   axios.post("/api/generate-flashcards/")
@@ -115,7 +142,8 @@ const UrlUpload = () => {
   };
 
   const flashcardList = flashcards.map((fc) => (
-    <FakeCard question={fc.card_front} answer={fc.card_back} />
+    // <FakeCard question={fc.card_front} answer={fc.card_back} />
+    <FakeCard question={fc.front} answer={fc.back} />
   ));
 
   function changeMethod() {
@@ -165,10 +193,12 @@ const UrlUpload = () => {
           )}
         </div>
       </div>
-      <div className="card-results">{flashcardList}
-      <button className="save" onClick={() => {alert("Your flashcards have been saved! Check it out in the 'My Decks' tab.")}}> I like it! </button>
+      <div className="right-side">
+        <div className="card-results">
+          {flashcardList}
+        </div>
+        {flashcardList.length > 0 ? <button className="save" onClick={saveFlashcards}> I like it! </button> : <></>}
       </div>
-
     </div>
   );
 };
