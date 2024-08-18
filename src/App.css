@@ -18,6 +18,6 @@
   position: absolute;
   left: 200px;
   top: 0;
-  padding: 0;
+  padding: 3%;
   width: calc(100% - 200px);
 }

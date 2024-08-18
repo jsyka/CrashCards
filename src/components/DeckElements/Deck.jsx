@@ -5,7 +5,7 @@ export default function Deck({title, onClick}) {
 
   return (
     <div className='deck-card' onClick={onClick}>
-      <div>{title}</div>
+      <div className='deck-title'>{title}</div>
     </div>
   )
 };
