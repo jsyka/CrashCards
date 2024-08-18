@@ -14,7 +14,7 @@ export default function HeroPage() {
             </div>
             <div className="description">
                 <h2>What is CrashCards?</h2>
-                <div>the best flashcard site ever! no premium plans, hidden fees, or paywalls!</div>
+                <p>the best flashcard site ever! no premium plans, hidden fees, or paywalls!</p>
             </div>
         </div>
     )
