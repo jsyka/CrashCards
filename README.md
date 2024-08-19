@@ -1,7 +1,13 @@
 # CrashCards
-CrashCards is an innovative tool designed to streamline your study process. By simply taking photos of your notes or entering text, CrashCards automatically generates flashcards for you to review. It's perfect for students and professionals looking to enhance their learning efficiency and retain information more effectively. Say goodbye to the hassle of manual flashcard creation and let CrashCards do the work, so you can focus on mastering the material.
+CrashCards is an innovative tool designed to streamline your study process! CrashCards takes inputs in the form of images or text from notes or lecture materials and converts them into a deck containing 10 unique flashcards - containing relative questions and answers. See all your decks in a convenient view and get ready to start reviewing! It's perfect for students and professionals looking to enhance their learning efficiency and retain information more effectively. Say goodbye to the hassle of manual flashcard creation and let CrashCards do the work, so you can focus on mastering the material. 
 
-CrashCards takes inputs in the form of images or text from notes or lecture materials and converts them into a deck containing 10 unique flashcards. Each flashcard includes its own set of questions and answers, designed to help users review and reinforce their knowledge of their notes.
+Check out [the project pitch](https://youtu.be/IWJ9k0QzL3Y) or [CrashCards Devpost](https://devpost.com/software/crashcards)!
+
+![CC-hero](https://github.com/user-attachments/assets/a8f592cd-f2d5-4aed-aa68-9472b5138b9a)
+![CC-result](https://github.com/user-attachments/assets/cb0794bc-b331-4aad-b851-7985b88549d1)
+![CC-decks](https://github.com/user-attachments/assets/c7956948-5f1e-4837-8f95-402bc305f15f)
+![CC-front](https://github.com/user-attachments/assets/d041163d-e70f-4568-b5dc-8a602dfaedf1)
+![CC-back](https://github.com/user-attachments/assets/f6c8c622-444a-48a8-9176-c8c08f6feb23)
 
 ## Tech Stack
 
