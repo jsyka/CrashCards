@@ -1,8 +1,8 @@
 import "./Hero.css";
-import Cards from "../DeckElements/Card.jsx";
 import { Link } from "react-router-dom";
 
 export default function HeroPage() {
+  // Landing/Home Page
   return (
     <div className="hero">
       <div className="hero-banner">

@@ -35,8 +35,8 @@
     border-radius: 25px;
     transition: background-color 0.3s, border 0.3s, color 0.3s;
     display: flex;
-    align-items: center; /* Ensure the icon and text are aligned */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    align-items: center;
+    box-sizing: border-box;
   }
   
   .nav-text:hover {
