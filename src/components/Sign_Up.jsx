@@ -4,7 +4,7 @@ import "./Sign_Up.css";
 import { useState } from "react";
 
 export default function Sign_Up() {
-    const [signUpSuccess, setSignUpSuccess]=useState('false');
+  const [signUpSuccess, setSignUpSuccess]=useState('false');
   const {
     register,
     handleSubmit,

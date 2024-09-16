@@ -89,9 +89,14 @@
     border: 1px solid var(#0173e9);
     border-radius: 30px;
     color: #0173e9;
+    width: 110px;
 }
 
 .allcards .buttons button:hover {
     border: 2px solid var(#0173e9);
     color: #0173e9;
+}
+
+.card-i {
+    width: 60px;
 }

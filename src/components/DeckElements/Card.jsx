@@ -6,12 +6,13 @@ export default function Cards({deck}) {
     // const [cards, setCard] = useState([]);
     const [currCard, setCurrCard] = useState(0);
 
+    // //retrieve all cards from database
     // useEffect(() => {
     //     axios.get("/api/cards/")
     //     .then((response) => {
     //         console.log(response.data);  // Log the response data
     //         if (response.data.length > 0) {
-    //         setCard(response.data);  // Chooses what field to display from db
+    //         setCard(response.data);
     //         } else {
     //         setCard([]);
     //         }
@@ -26,6 +27,7 @@ export default function Cards({deck}) {
     //     <FlashCard title={card.title} front={card.card_front} back={card.card_back} date={card.created_at} key={card.id}/>
     // ));
 
+    //change current card being viewed
     function prevCard() {
         if (currCard == 0) {
             setCurrCard(deck.length-1);
@@ -33,7 +35,6 @@ export default function Cards({deck}) {
             setCurrCard(currCard-1);
         }
     }
-
     function nextCard() {
         if (currCard == deck.length-1) {
             setCurrCard(0);
@@ -48,15 +49,12 @@ export default function Cards({deck}) {
 
     return (
         <div className="allcards">
-            <h2></h2>
-            {/* <div className="cards">
-                {cardsList.length > 0 ? cardsList[currCard] : <div>No Cards Found</div>}
-            </div> */}
             <div className="cards">
                 {deckList.length > 0 ? deckList[currCard] : <div>No Cards Found</div>}
             </div>
             <div className="buttons"> 
                 <button onClick={prevCard}>Previous</button>
+                <div className="card-i">({currCard+1}/{deckList.length})</div>
                 <button onClick={nextCard}>Next</button>
             </div>
         </div>
@@ -91,7 +89,6 @@ function FlashCard({title, front, back, date}) {
                     <div className="card-text">{front}</div>
                 </div>}
                 {showBack && <div className="card-back">
-                    {/* <div className="title">{title}</div> */}
                     <div className="card-text">{back}</div>
                 </div>}
                 {/* <div className="date">{date}</div> */}

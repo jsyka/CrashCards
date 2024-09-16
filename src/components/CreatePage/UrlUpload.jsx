@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import "./UrlUpload.css";
 
-const UrlUpload = () => {
+export default function UrlUpload() {
   const [imageUrl, setImageUrl] = useState("");
   const [notes, setNotes] = useState("");
   const [flashcards, setFlashcards] = useState([]);
@@ -18,10 +18,52 @@ const UrlUpload = () => {
       .catch((error) => console.error("Error fetching CSRF token:", error));
   }, []);
 
+  const flashcardList = flashcards.map((fc, i) => (
+    // <FakeCard question={fc.card_front} answer={fc.card_back} />
+    <FakeCard question={fc.front} answer={fc.back} index={i}/>
+  ));
+
+  //call backend to create and save new deck of flashcards
+  const saveFlashcards = async () => {
+    const deckTitle = prompt("Enter a title for your flashcard deck:", "Untitled Deck");
+    if (!deckTitle) {
+      alert("You must provide a title to save the flashcards.");
+      return;
+    }
+
+    console.log("starting here, ", flashcards)
+    try {
+      const response = await fetch("api/save-flashcards/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken,
+        },
+        body: JSON.stringify({ flashcards, deckTitle }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save flashcards");
+      }
+
+      const data = await response.json();
+      console.log("save flashcard response:", data);
+      setImageUrl("");
+      setNotes("");
+      setFlashcards([]);
+      alert("Your flashcards have been saved as a new Deck called " + deckTitle + "! Check it out in My Decks.");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Sorry, an error occured while saving your flashcards. Please try again later.")
+    }
+  }
+
+  //call backend to generate flashcards from notes
+  //if successful, sets flashcards to a list of objects with front and back property
   const handleGenerate = async (notes) => {
     console.log("notes going in: ", notes);
     alert(
-      "Flashcards are being generated, please be patient! Try again in 15 seconds if text is not generated."
+      "Flashcards are being generated, please be patient! Try again in 10 seconds if an error occurs."
     );
     try {
       const response = await fetch("api/generate-flashcards/", {
@@ -38,31 +80,15 @@ const UrlUpload = () => {
       }
 
       const data = await response.json();
-      setFlashcards(data["cards"]);
       console.log("FCS:", data);
+      setFlashcards(data);
     } catch (error) {
       console.error("Error:", error);
       alert("Sorry, an error occured while generating your flashcards. Please try again later.")
     }
   };
 
-  // useEffect(() => {
-  //   // Fetch CSRF token from Django
-  //   axios.get('http://localhost:8000/csrf-token/')
-  //     .then(response => setCsrfToken(response.data.csrfToken))
-  //     .catch(error => console.error('Error fetching CSRF token:', error));
-  // }, []);
-
-  // const handleGenerate = async () => {
-  //   axios.post("/api/generate-flashcards/")
-  //   .then((response) => {
-  //     console.log(response);  // Log the response data
-  //   })
-  //   .catch((error) => {
-  //     console.log("error...", error);
-  //   });
-  // };
-
+  //parse response from Azure OCR to set notes and feed into flashcard generation
   function parseResponse(response) {
     let caption = response["caption"]["text"];
     console.log("This looks like a " + caption);
@@ -93,14 +119,10 @@ const UrlUpload = () => {
       });
   }, []);
 
-  const handleChange = (event) => {
-    setImageUrl(event.target.value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submitted URL:", imageUrl);
-
+    //get text found in image url
     axios
       .get(`http://localhost:5001/api/analyze-image?imageUrl=${imageUrl}`)
       .then((response) => {
@@ -114,9 +136,9 @@ const UrlUpload = () => {
       });
   };
 
-  const flashcardList = flashcards.map((fc) => (
-    <FakeCard question={fc.card_front} answer={fc.card_back} />
-  ));
+  const handleChange = (event) => {
+    setImageUrl(event.target.value);
+  };
 
   function changeMethod() {
     setUploadMethod(!uploadMethod);
@@ -139,7 +161,7 @@ const UrlUpload = () => {
                   type="text"
                   value={imageUrl}
                   onChange={handleChange}
-                  placeholder="Enter an image URL"
+                  placeholder="enter image URL ending in .png, .jpg, ..."
                   required
                 />
                 <button type="submit">Submit</button>
@@ -165,22 +187,22 @@ const UrlUpload = () => {
           )}
         </div>
       </div>
-      <div className="card-results">{flashcardList}
-      <button className="save" onClick={() => {alert("Your flashcards have been saved! Check it out in the 'My Decks' tab.")}}> I like it! </button>
+      <div className="right-side">
+        <div className="card-results">
+          {flashcardList}
+        </div>
+        {flashcardList.length > 0 ? <button className="save" onClick={saveFlashcards}> I like it! </button> : <></>}
       </div>
-
     </div>
   );
 };
 
-function FakeCard({ question, answer }) {
+function FakeCard({ question, answer, index }) {
   return (
     <div>
-      <div>Q: {question}</div>
-      <div>A: {answer}</div>
+      <div>Q{index+1}: {question}</div>
+      <div>A{index+1}: {answer}</div>
       <br/>
     </div>
   );
 }
-
-export default UrlUpload;
